@@ -40,6 +40,9 @@
 - (void)resetEmulationWithCompletionHandler:(void(^)(void))handler;
 - (void)stopEmulationWithCompletionHandler:(void(^)(void))handler;
 
+- (void)startNetplayHosting;
+- (void)connectToNetplayServer:(NSString *)address;
+
 - (void)saveStateToFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL success, NSError *error))block;
 - (void)loadStateFromFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL success, NSError *error))block;
 

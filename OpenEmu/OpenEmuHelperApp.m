@@ -773,6 +773,14 @@
      }];
 }
 
+- (void)startNetplayHosting {
+	[[self gameCore] startNetplayHosting];
+}
+
+- (void)connectToNetplayServer:(NSString *)address {
+	[[self gameCore] connectToNetplayServer:address];
+}
+
 - (void)saveStateToFileAtPath:(NSString *)fileName completionHandler:(void (^)(BOOL, NSError *))block
 {
     [[self gameCoreProxy] saveStateToFileAtPath:fileName completionHandler:block];

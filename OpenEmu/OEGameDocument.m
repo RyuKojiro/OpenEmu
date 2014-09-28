@@ -1194,12 +1194,16 @@ typedef enum : NSUInteger
 
 - (IBAction)netplayHost:(id)sender
 {
-	
+	// TODO: Add some sort of UI for hosting
+	[_gameCoreManager startNetplayHosting];
 }
 
 - (IBAction)netplayConnect:(id)sender
 {
-	
+	// TODO: Add some sort of UI for hosting
+	NSString *address = @"10.0.0.53";
+	[_gameCoreManager connectToNetplayServer:address];
+
 }
 
 #pragma mark - Saving States
