@@ -1200,10 +1200,22 @@ typedef enum : NSUInteger
 
 - (IBAction)netplayConnect:(id)sender
 {
-	// TODO: Add some sort of UI for hosting
-	NSString *address = @"10.0.0.53";
-	[_gameCoreManager connectToNetplayServer:address];
+	OEHUDAlert *alert = [[OEHUDAlert alloc] init];
+	
+	[alert setTitle:OELocalizedString(@"Connect to Server", @"")];
 
+	[alert setInputLabelText:OELocalizedString(@"Server:", @"")];
+	[alert setShowsInputField:YES];
+	[alert setStringValue:@""];
+	
+	[alert setDefaultButtonTitle:OELocalizedString(@"Connect", @"")];
+	[alert setAlternateButtonTitle:OELocalizedString(@"Cancel", @"")];
+	
+	[alert setInputLimit:1000];
+	
+	if([alert runModal]) {
+		[_gameCoreManager connectToNetplayServer:[alert stringValue]];
+	}
 }
 
 #pragma mark - Saving States
