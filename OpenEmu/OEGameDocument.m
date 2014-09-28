@@ -59,6 +59,7 @@
 
 NSString *const OEGameCoreManagerModePreferenceKey = @"OEGameCoreManagerModePreference";
 NSString *const OEGameDocumentErrorDomain = @"OEGameDocumentErrorDomain";
+NSString *const OEGameLastNetplayAddressKey = @"OEGameLastNetplayAddress";
 
 #define UDDefaultCoreMappingKeyPrefix   @"defaultCore"
 #define UDSystemCoreMappingKeyForSystemIdentifier(_SYSTEM_IDENTIFIER_) [NSString stringWithFormat:@"%@.%@", UDDefaultCoreMappingKeyPrefix, _SYSTEM_IDENTIFIER_]
@@ -1206,7 +1207,9 @@ typedef enum : NSUInteger
 
 	[alert setInputLabelText:OELocalizedString(@"Server:", @"")];
 	[alert setShowsInputField:YES];
-	[alert setStringValue:@""];
+	
+	NSString *history = [[NSUserDefaults standardUserDefaults] stringForKey:OEGameLastNetplayAddressKey];
+	[alert setStringValue:history ? history : @""];
 	
 	[alert setDefaultButtonTitle:OELocalizedString(@"Connect", @"")];
 	[alert setAlternateButtonTitle:OELocalizedString(@"Cancel", @"")];
@@ -1214,6 +1217,7 @@ typedef enum : NSUInteger
 	[alert setInputLimit:1000];
 	
 	if([alert runModal]) {
+		[[NSUserDefaults standardUserDefaults] setObject:[alert stringValue] forKey:OEGameLastNetplayAddressKey];
 		[_gameCoreManager connectToNetplayServer:[alert stringValue]];
 	}
 }

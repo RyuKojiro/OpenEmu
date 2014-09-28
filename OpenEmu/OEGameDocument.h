@@ -29,6 +29,7 @@
 
 extern NSString *const OEGameCoreManagerModePreferenceKey;
 extern NSString *const OEGameDocumentErrorDomain;
+extern NSString *const OEGameLastNetplayAddressKey;
 
 enum _OEGameDocumentErrorCodes
 {
