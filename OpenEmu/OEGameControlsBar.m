@@ -405,6 +405,27 @@ NSString *const OEGameControlsBarShowsAudioOutput       = @"HUDBarShowAudioOutpu
             }
     }
 
+	// Setup Netplay Menu
+    if([[self gameViewController] supportsNetplay])
+    {
+        NSMenu *netplayMenu = [[NSMenu alloc] init];
+        [netplayMenu setTitle:OELocalizedString(@"Netplay", @"")];
+        item = [[NSMenuItem alloc] init];
+        [item setTitle:OELocalizedString(@"Netplay", @"")];
+        [menu addItem:item];
+        [item setSubmenu:netplayMenu];
+		
+        NSMenuItem *npServerMenuItem = [[NSMenuItem alloc] initWithTitle:OELocalizedString(@"Host game…", @"")
+                                                                  action:@selector(netplayHost:)
+                                                           keyEquivalent:@""];
+        [netplayMenu addItem:npServerMenuItem];
+		
+        NSMenuItem *npClientMenuItem = [[NSMenuItem alloc] initWithTitle:OELocalizedString(@"Connect to server…", @"")
+                                                                  action:@selector(netplayConnect:)
+                                                           keyEquivalent:@""];
+        [netplayMenu addItem:npClientMenuItem];
+	}
+	
     // Create OEMenu and display it
     [menu setDelegate:self];
 

@@ -75,6 +75,7 @@ extern NSString *const OEScreenshotPropertiesKey;
 
 - (BOOL)supportsCheats;
 - (BOOL)supportsSaveStates;
+- (BOOL)supportsNetplay;
 - (NSString *)coreIdentifier;
 - (NSString *)systemIdentifier;
 

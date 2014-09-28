@@ -97,6 +97,11 @@ enum _OEGameDocumentErrorCodes
 - (BOOL)supportsCheats;
 - (void)setCheat:(NSString *)cheatCode withType:(NSString *)type enabled:(BOOL)enabled;
 
+#pragma mark - Netplay
+- (BOOL)supportsNetplay;
+- (IBAction)netplayHost:(id)sender;
+- (IBAction)netplayConnect:(id)sender;
+
 #pragma mark - Saving States
 - (BOOL)supportsSaveStates;
 

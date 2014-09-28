@@ -1186,6 +1186,22 @@ typedef enum : NSUInteger
     [_gameCoreManager setCheat:cheatCode withType:type enabled:enabled];
 }
 
+#pragma mark - Netplay
+
+- (BOOL)supportsNetplay {
+    return [[[_gameCoreManager plugin] controller] netplaySupportedForSystemIdentifier:[_gameSystemController systemIdentifier]];
+}
+
+- (IBAction)netplayHost:(id)sender
+{
+	
+}
+
+- (IBAction)netplayConnect:(id)sender
+{
+	
+}
+
 #pragma mark - Saving States
 
 - (BOOL)supportsSaveStates

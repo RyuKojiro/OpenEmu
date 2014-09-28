@@ -181,6 +181,10 @@ NSString *const OEScreenshotPropertiesKey = @"screenshotProperties";
     return [[self document] supportsSaveStates];
 }
 
+- (BOOL)supportsNetplay {
+    return [[self document] supportsNetplay];
+}
+
 - (NSString *)coreIdentifier;
 {
     return [[self document] coreIdentifier];
